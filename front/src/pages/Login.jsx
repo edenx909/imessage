@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { motion } from "framer-motion";
+
 import useLogin from "../hooks/useLogin.js";
 function Login() {
+  // for framer
+  const [hover, setHover] = useState(false);
   // add animation if loading = true
   const { loading, login } = useLogin();
   const [username, setUsername] = useState("");
@@ -25,20 +29,20 @@ function Login() {
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="border rounded-t-xl px-10 py-2 "
+            className="rounded-t-xl border px-10 py-2"
           />
         </div>
         <div className="">
           <label>
             <span className="hidden">Password</span>
           </label>
-          <div className="relative ">
+          <div className="relative">
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="border rounded-b-xl px-10 py-2 "
+              className="rounded-b-xl border px-10 py-2"
             />
             <button
               type="submit"
@@ -59,22 +63,28 @@ function Login() {
             </button>
           </div>
         </div>
-        <div className="px-3 py-2 flex flex-col items-center">
-          <Link to="/signup" className="text-[#0066CC] flex items-end">
+        <div className="flex flex-col items-center px-3 py-2">
+          <Link
+            to="/signup"
+            className="my-4 flex items-end text-[#0066CC]"
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+          >
             Create an Account
             {/* TODO: animate on hover */}
-            <svg
+            <motion.svg
               xmlns="http://www.w3.org/2000/svg"
               width="1.4em"
               height="1.4em"
               viewBox="0 0 24 24"
-              className="rotate-45"
+              animate={{ rotate: hover ? "90deg" : "45deg" }}
+              transition={{ duration: 0.1, ease: "easeIn" }}
             >
               <path
                 fill="#0066CC"
                 d="m12.354 5.646l5 5a.5.5 0 0 1-.708.708L12.5 7.207V18a.5.5 0 0 1-1 0V7.207l-4.146 4.147a.5.5 0 0 1-.708-.708l5-5a.5.5 0 0 1 .708 0"
               ></path>
-            </svg>
+            </motion.svg>
           </Link>
         </div>
       </form>

@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
+import { motion } from "framer-motion";
+
 import useSignup from "../hooks/useSignup";
 
 const Signup = () => {
+  // for framer
+  const [hover, setHover] = useState(false);
+
   // needs animation on loading = true
   const { loading, signup } = useSignup();
   const [inputs, setInputs] = useState({
@@ -22,7 +27,7 @@ const Signup = () => {
     <div className="flex flex-col">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col  items-center justify-center"
+        className="flex flex-col items-center justify-center"
       >
         <p>Create Your Apple Account</p>
         <div className="py-2">
@@ -34,7 +39,7 @@ const Signup = () => {
             placeholder="Full Name"
             value={inputs.fullName}
             onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
-            className="border rounded-md px-10 py-2"
+            className="rounded-md border px-10 py-2"
           />
         </div>
         <div className="py-1">
@@ -46,7 +51,7 @@ const Signup = () => {
             placeholder="Username"
             value={inputs.usernamer}
             onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
-            className="border rounded-md px-10 py-2"
+            className="rounded-md border px-10 py-2"
           />
         </div>
         <div className="py-1">
@@ -58,7 +63,7 @@ const Signup = () => {
             placeholder="Password"
             value={inputs.password}
             onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
-            className="border rounded-md px-10 py-2"
+            className="rounded-md border px-10 py-2"
           />
         </div>
         <div className="py-1">
@@ -72,33 +77,36 @@ const Signup = () => {
             onChange={(e) =>
               setInputs({ ...inputs, confirmPassword: e.target.value })
             }
-            className="border rounded-md px-10 py-2"
+            className="rounded-md border px-10 py-2"
           />
         </div>
-        <div>
-          <Link
-            to="/login"
-            className="flex  items-center justify-center text-[#0066CC]"
-          >
-            Already have an Account?
-            {/* TODO: animate on hover */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="1.4em"
-              height="1.4em"
-              viewBox="0 0 24 24"
-              className="rotate-45"
-            >
-              <path
-                fill="#0066CC"
-                d="m12.354 5.646l5 5a.5.5 0 0 1-.708.708L12.5 7.207V18a.5.5 0 0 1-1 0V7.207l-4.146 4.147a.5.5 0 0 1-.708-.708l5-5a.5.5 0 0 1 .708 0"
-              ></path>
-            </svg>
-          </Link>
+        <div className="py-7">
+          <button className="rounded-full border bg-[#3494DF] px-3 py-1 text-white">
+            Sign Up
+          </button>
         </div>
-        <button className="bg-[#3494DF] border px-3 py-1 text-white rounded-full">
-          Sign Up
-        </button>
+        <Link
+          to="/login"
+          className="my-7 flex items-center justify-center text-[#0066CC]"
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+        >
+          Already have an Account?
+          {/* TODO: animate on hover */}
+          <motion.svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.4em"
+            height="1.4em"
+            viewBox="0 0 24 24"
+            animate={{ rotate: hover ? "90deg" : "45deg" }}
+            transition={{ duration: 0.1, ease: "easeIn" }}
+          >
+            <path
+              fill="#0066CC"
+              d="m12.354 5.646l5 5a.5.5 0 0 1-.708.708L12.5 7.207V18a.5.5 0 0 1-1 0V7.207l-4.146 4.147a.5.5 0 0 1-.708-.708l5-5a.5.5 0 0 1 .708 0"
+            ></path>
+          </motion.svg>
+        </Link>
       </form>
     </div>
   );
