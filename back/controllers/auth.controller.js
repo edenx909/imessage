@@ -6,16 +6,16 @@ import genTokenSetCookie from "../utils/tokenGen.js";
 export const signup = async (req, res) => {
   try {
     const { fullName, username, password, confirmPassword } = req.body;
-    // pw check, end early if false
+    // pw check, end early if not same
     if (password !== confirmPassword) {
       return res.status(400).json({ error: "Passwords dont match" });
     }
-    // username check, end early if false
+    // username check, end early if taken
     const user = await User.findOne({ username });
     if (user) {
       return res.status(400).json({ error: "Username already exists" });
     }
-    // pw hash
+    // pw hash using bcrypt
     const salt = await bcrypt.genSalt(10);
     const hashedPW = await bcrypt.hash(password, salt);
 
@@ -30,7 +30,7 @@ export const signup = async (req, res) => {
       profile,
     });
 
-    // if successful, genToken for 15d
+    // if successful, genTokenSetCookie
     if (newUser) {
       genTokenSetCookie(newUser._id, res);
       await newUser.save();
@@ -56,14 +56,14 @@ export const login = async (req, res) => {
     const user = await User.findOne({ username });
     // check if pw is valid
     const checkPW = await bcrypt.compare(password, user?.password || "");
-    // if both not valid, end
+    // if both invalid, end now
     if (!user || !checkPW) {
       return res
         .status(400)
         .json({ error: "Username or Password doesnt match" });
     }
 
-    // if successful, genToken for 15d
+    // if successful, genTokenSetCookie (15d)
     genTokenSetCookie(user._id, res);
     res.status(201).json({
       _id: user._id,
@@ -79,7 +79,7 @@ export const login = async (req, res) => {
 
 export const logout = (req, res) => {
   try {
-    // remove cookie
+    // remove cookie on logout
     res.cookie("jwt", "", { maxAge: 0 });
     res.status(200).json({ message: "Logged Out Successfully" });
   } catch (error) {
