@@ -13,7 +13,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route
-          path="/"
+          path="/*"
           element={authorizedUser ? <Home /> : <Navigate to="/login" />}
         />
 
@@ -21,7 +21,7 @@ function App() {
           path="/login"
           element={
             authorizedUser ? (
-              <Navigate to="/" />
+              <Navigate to="/*" />
             ) : (
               <>
                 <Onboard>
@@ -35,7 +35,7 @@ function App() {
           path="/signup"
           element={
             authorizedUser ? (
-              <Navigate to="/" />
+              <Navigate to="/*" />
             ) : (
               <>
                 <Onboard>

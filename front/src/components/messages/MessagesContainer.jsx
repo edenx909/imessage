@@ -8,7 +8,7 @@ function MessagesContainer() {
   const { selectedChat, setSelectedChat } = useChat();
 
   const { authorizedUser } = useAuthContext();
-  console.log(authorizedUser);
+
   useEffect(() => {
     // unmounts, set to null
     return () => setSelectedChat(null);

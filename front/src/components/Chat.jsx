@@ -14,7 +14,9 @@ function Chat({ chat }) {
       <div className="flex items-center space-x-2">
         <img src={chat.profile} className="rounded-full w-10 h-10" />
         <div>
-          <p>{chat.username}</p>
+          <p className={`${isSelected ? "bg-red-950 text-white" : ""}`}>
+            {chat.username} {isOnline ? "isONLINEEEE" : ""}
+          </p>
           <p>status</p>
         </div>
       </div>
