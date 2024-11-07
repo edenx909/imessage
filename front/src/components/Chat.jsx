@@ -1,13 +1,14 @@
-function Chat() {
+import useChat from "../zustand/useChat.js";
+
+function Chat({ chat }) {
+  console.log(chat);
+  const { setSelectedChat } = useChat();
   return (
-    <div className="p-2">
+    <div className="p-2" onClick={() => setSelectedChat(chat)}>
       <div className="flex items-center space-x-2">
-        <img
-          src="https://api.dicebear.com/9.x/pixel-art/svg?seed=eden"
-          className="rounded-full w-10 h-10"
-        />
+        <img src={chat.profile} className="rounded-full w-10 h-10" />
         <div>
-          <p>Eden</p>
+          <p>{chat.username}</p>
           <p>status</p>
         </div>
       </div>

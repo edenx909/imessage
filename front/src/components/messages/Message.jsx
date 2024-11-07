@@ -1,14 +1,22 @@
-function Message() {
+import { useAuthContext } from "../../contexts/AuthContext";
+import useChat from "../../zustand/useChat";
+
+function Message({ message }) {
+  const { authorizedUser } = useAuthContext();
+  const { selectedChat } = useChat();
+  const fromUser = message.senderId === authorizedUser._id;
+
+  const chatAlignment = fromUser ? "ChatRight" : "ChatLeft";
+  const profile = fromUser ? authorizedUser.profile : selectedChat?.profile;
+  const bgColor = fromUser ? "bg-blue-500" : "";
+
   return (
-    <div className="flex">
+    <div className={`${chatAlignment}`}>
       <div>
-        Hiiii <span>12:53</span>
+        <img src={profile} className="rounded-full w-10 h-10" />
       </div>
-      <div>
-        <img
-          src="https://api.dicebear.com/9.x/pixel-art/svg?seed=eden"
-          className="rounded-full w-10 h-10"
-        />
+      <div className={`${bgColor}`}>
+        {message.message} <span>{message.createdAt}</span>
       </div>
     </div>
   );
