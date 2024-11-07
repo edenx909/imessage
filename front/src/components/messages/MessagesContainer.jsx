@@ -2,10 +2,13 @@ import { useEffect } from "react";
 import useChat from "../../zustand/useChat.js";
 import MessageInput from "./MessageInput.jsx";
 import Messages from "./Messages.jsx";
+import { useAuthContext } from "../../contexts/AuthContext.jsx";
 
 function MessagesContainer() {
   const { selectedChat, setSelectedChat } = useChat();
 
+  const { authorizedUser } = useAuthContext();
+  console.log(authorizedUser);
   useEffect(() => {
     // unmounts, set to null
     return () => setSelectedChat(null);
@@ -13,7 +16,7 @@ function MessagesContainer() {
   return (
     <div className="flex  flex-col">
       {!selectedChat ? (
-        <>Start Chatting</>
+        <p>welcome {authorizedUser.fullname}, start chatting</p>
       ) : (
         <div className="flex flex-col ">
           <div className="text-center p-5 border">

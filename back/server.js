@@ -7,7 +7,7 @@ import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import connectToDb from "./db/connectToDb.js";
 
-const app = express();
+import { app, server } from "./socket/socket.js";
 const PORT = process.env.PORT || 8000;
 
 dotenv.config();
@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
   res.send("server running");
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectToDb();
   console.log(`running on ${PORT}`);
 });

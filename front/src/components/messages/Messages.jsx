@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 
 function Messages() {
   const { messages, loading } = useGetMessages();
+  // to scroll to latest
   const lastMessageRef = useRef();
   useEffect(() => {
     setTimeout(() => {
