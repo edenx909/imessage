@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { AnimatePresence, motion } from "framer-motion";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   return (
     <div className="border-b-[1px]">
       <div className="m-3 flex items-center justify-between p-3">
@@ -63,7 +62,7 @@ const Navbar = () => {
               </Link>
             </motion.div>
             <motion.div className="h-1 w-full border-b" />
-            {/* TODO: add a indicator that its redirecting */}
+            {/* TODO: add a indicator that it will redirect */}
             <motion.a href="https://edenxrana.vercel.app/">Portfolio</motion.a>
           </motion.div>
         </AnimatePresence>

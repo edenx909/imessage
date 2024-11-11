@@ -5,7 +5,7 @@ function Chats() {
   const { loading, chats } = useGetChats();
 
   return (
-    <div className="w-1/2">
+    <div className="flex flex-col items-start justify-center">
       {loading ? <p>Loading</p> : ""}
       {chats.map((chat) => (
         <Chat key={chat._id} chat={chat} />

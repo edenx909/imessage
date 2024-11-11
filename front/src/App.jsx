@@ -9,44 +9,46 @@ import Navbar from "./components/Navbar";
 function App() {
   const { authorizedUser } = useAuthContext();
   return (
-    <>
+    <div className="h-screen">
       <Navbar />
-      <Routes>
-        <Route
-          path="/*"
-          element={authorizedUser ? <Home /> : <Navigate to="/login" />}
-        />
+      <div className="">
+        <Routes>
+          <Route
+            path="/*"
+            element={authorizedUser ? <Home /> : <Navigate to="/login" />}
+          />
 
-        <Route
-          path="/login"
-          element={
-            authorizedUser ? (
-              <Navigate to="/*" />
-            ) : (
-              <>
-                <Onboard>
-                  <Login />
-                </Onboard>
-              </>
-            )
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            authorizedUser ? (
-              <Navigate to="/*" />
-            ) : (
-              <>
-                <Onboard>
-                  <Signup />
-                </Onboard>
-              </>
-            )
-          }
-        />
-      </Routes>
-    </>
+          <Route
+            path="/login"
+            element={
+              authorizedUser ? (
+                <Navigate to="/*" />
+              ) : (
+                <>
+                  <Onboard>
+                    <Login />
+                  </Onboard>
+                </>
+              )
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              authorizedUser ? (
+                <Navigate to="/*" />
+              ) : (
+                <>
+                  <Onboard>
+                    <Signup />
+                  </Onboard>
+                </>
+              )
+            }
+          />
+        </Routes>
+      </div>
+    </div>
   );
 }
 

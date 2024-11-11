@@ -1,13 +1,11 @@
 import Chats from "./Chats";
-import LogOut from "./LogOut";
-import SearchInput from "./SearchInput";
+import SearchInput from "../components/SearchInput";
 
 function UserList() {
   return (
-    <div>
+    <div className="flex flex-col overflow-y-auto">
       <SearchInput />
       <Chats />
-      <LogOut />
     </div>
   );
 }

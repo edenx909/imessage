@@ -6,24 +6,33 @@ import { useAuthContext } from "../../contexts/AuthContext.jsx";
 
 function MessagesContainer() {
   const { selectedChat, setSelectedChat } = useChat();
-
   const { authorizedUser } = useAuthContext();
 
   useEffect(() => {
+    [];
     // unmounts, set to null
     return () => setSelectedChat(null);
   }, [setSelectedChat]);
   return (
-    <div className="flex  flex-col">
+    <div className="flex flex-col overflow-y-auto bg-[#1F1F1F]">
       {!selectedChat ? (
-        <p>welcome {authorizedUser.fullname}, start chatting</p>
+        <div className="flex flex-col items-center space-y-3 rounded-md bg-[#3E3A3B] p-5">
+          <img
+            src={authorizedUser.profile}
+            className="h-10 w-10 rounded-full"
+          />
+          <p>Welcome {authorizedUser.fullname}, Start a Conversation!</p>
+        </div>
       ) : (
-        <div className="flex flex-col ">
-          <div className="text-center p-5 border">
-            <span>To</span>
-            <span>{selectedChat.username}</span>
+        <div className="flex flex-col">
+          <div className="flex items-center text-center">
+            <img
+              src={selectedChat.profile}
+              className="h-10 w-10 rounded-full"
+            />
+            {selectedChat.username}
           </div>
-          <div>
+          <div className="flex flex-col">
             <Messages />
             <MessageInput />
           </div>
