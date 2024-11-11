@@ -20,8 +20,8 @@ const useSendMessage = () => {
       if (data.error) {
         throw new Error(data.error);
       }
-
-      setMessages([...messages, data]);
+      console.log(data.newMessage);
+      setMessages([...messages, data.newMessage]);
     } catch (error) {
       console.log(error);
     } finally {
