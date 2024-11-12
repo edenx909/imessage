@@ -4,7 +4,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import Logo from "../assets/logo";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
+  // for portfolio link
+  const [hover, setHover] = useState(false);
   return (
     <>
       <div className="flex h-32 items-center justify-between px-6 py-6">
@@ -21,7 +23,7 @@ const Navbar = () => {
             viewBox="0 0 24 24"
             initial={{ rotateY: "0deg", scaleX: 1, filter: "blur(5px)" }}
             animate={{
-              rotateY: open ? "180deg" : "0deg",
+              rotateY: open ? "0deg" : "180deg",
               scaleY: open ? [1, 1.3, 1] : [1, 1, 1],
               filter: "blur(0px)",
             }}
@@ -34,29 +36,60 @@ const Navbar = () => {
           </motion.svg>
         </button>
       </div>
-      {!open && (
+      {open && (
         <AnimatePresence mode="wait">
           <motion.div
-            className="mx-3 flex flex-col space-y-3 px-8 pb-8 text-sm"
+            className="fixed mx-3 flex flex-col space-y-3 px-8 pb-8 text-sm"
             initial={{ y: -40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -40, opacity: 0 }}
-            transition={{ duration: 1.2, staggerChildren: 0.4 }}
+            transition={{ duration: 1.2, staggerChildren: 0.9 }}
           >
-            <motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
               <Link to="/login" onClick={() => setOpen(false)}>
                 Sign In
               </Link>
             </motion.div>
             <motion.div className="h-1 w-full border-b" />
-            <motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
               <Link to="/signup" onClick={() => setOpen(false)}>
                 Create Your Apple Account
               </Link>
             </motion.div>
             <motion.div className="h-1 w-full border-b" />
             {/* TODO: add a indicator that it will redirect */}
-            <motion.a href="https://edenxrana.vercel.app/">Portfolio</motion.a>
+            <motion.a
+              href="https://edenxrana.vercel.app/"
+              className="flex items-end"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            >
+              Portfolio
+              <motion.svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1.4em"
+                height="1.4em"
+                viewBox="0 0 24 24"
+                animate={{ rotate: hover ? "90deg" : "45deg" }}
+                transition={{ duration: 0.1, ease: "easeIn" }}
+              >
+                <path
+                  fill="#00000"
+                  d="m12.354 5.646l5 5a.5.5 0 0 1-.708.708L12.5 7.207V18a.5.5 0 0 1-1 0V7.207l-4.146 4.147a.5.5 0 0 1-.708-.708l5-5a.5.5 0 0 1 .708 0"
+                ></path>
+              </motion.svg>
+            </motion.a>
           </motion.div>
         </AnimatePresence>
       )}
