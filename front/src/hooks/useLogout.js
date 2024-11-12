@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useAuthContext } from "../contexts/AuthContext";
+import { useToastContext } from "../contexts/ToastContext";
 
 const useLogout = () => {
   const { setAuthorizedUser } = useAuthContext();
+  const { setToast } = useToastContext();
+
   const [loading, setLoading] = useState(false);
 
   const logout = async () => {
@@ -21,6 +24,7 @@ const useLogout = () => {
       localStorage.removeItem("imsgUser");
       setAuthorizedUser(null);
     } catch (error) {
+      setToast(error.message);
       console.log(error.message);
     } finally {
       setLoading(false);

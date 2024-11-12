@@ -12,10 +12,10 @@ import Toast from "./components/toast/Toast";
 
 function App() {
   const { authorizedUser } = useAuthContext();
-  const [toastError, setToastError] = useState("");
+
   return (
     <div className="h-screen">
-      <Toast toastError={toastError} />
+      <Toast />
       <Background />
       <Navbar />
       <div>

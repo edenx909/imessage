@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useAuthContext } from "../contexts/AuthContext";
+import { useToastContext } from "../contexts/ToastContext";
 
 const useLogin = () => {
+  const { setToast } = useToastContext();
   const { setAuthorizedUser } = useAuthContext();
   const [loading, setLoading] = useState(false);
 
@@ -22,8 +24,9 @@ const useLogin = () => {
 
       localStorage.setItem("imsgUser", JSON.stringify(data));
       setAuthorizedUser(data);
+      console.log(data);
     } catch (error) {
-      console.log(error.message);
+      setToast(error.message);
     } finally {
       setLoading(false);
     }
@@ -37,7 +40,7 @@ export default useLogin;
 // validation
 function handleInput(username, password) {
   if (!username || !password) {
-    console.log("Fill everything");
+    console.log("Please Fill Everything");
     return false;
   }
 

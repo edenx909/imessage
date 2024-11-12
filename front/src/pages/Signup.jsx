@@ -82,7 +82,17 @@ const Signup = () => {
           />
         </div>
         <div className="py-7">
-          <button className="rounded-full border bg-[#3494DF] px-3 py-1 text-white">
+          <button
+            className="rounded-full border bg-[#3494DF] px-3 py-1 text-white disabled:bg-[#A2AAAD]"
+            disabled={
+              inputs.fullName &&
+              inputs.username &&
+              inputs.password &&
+              inputs.confirmPassword
+                ? false
+                : true
+            }
+          >
             Sign Up
           </button>
         </div>

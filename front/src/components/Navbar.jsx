@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Logo from "../assets/logo";
 
@@ -7,6 +7,13 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   // for portfolio link
   const [hover, setHover] = useState(false);
+
+  // TODO
+  // to conditional render the onboard links
+  const location = useLocation();
+  const path = location.pathname;
+  console.log(path);
+
   return (
     <>
       <div className="flex h-32 items-center justify-between px-6 py-6">
