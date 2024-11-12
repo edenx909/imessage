@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
 import { motion } from "framer-motion";
 
 import useSignup from "../hooks/useSignup";
+import Container from "../components/logoAnimation/Container";
 
 const Signup = () => {
   // for framer
@@ -25,12 +25,13 @@ const Signup = () => {
   };
   return (
     <div className="flex flex-col">
+      <Container />
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center justify-center"
       >
-        <p>Create Your Apple Account</p>
-        <div className="py-2">
+        <p className="py-3">Create Your Apple Account</p>
+        <div className="">
           <label>
             <span className="hidden">Full Name</span>
           </label>
@@ -39,10 +40,10 @@ const Signup = () => {
             placeholder="Full Name"
             value={inputs.fullName}
             onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
-            className="rounded-md border px-10 py-2"
+            className="rounded-t-xl border px-10 py-2"
           />
         </div>
-        <div className="py-1">
+        <div className="">
           <label>
             <span className="hidden">Username</span>
           </label>
@@ -51,10 +52,10 @@ const Signup = () => {
             placeholder="Username"
             value={inputs.usernamer}
             onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
-            className="rounded-md border px-10 py-2"
+            className="border px-10 py-2"
           />
         </div>
-        <div className="py-1">
+        <div className="">
           <label>
             <span className="hidden">Password</span>
           </label>
@@ -63,10 +64,10 @@ const Signup = () => {
             placeholder="Password"
             value={inputs.password}
             onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
-            className="rounded-md border px-10 py-2"
+            className="border px-10 py-2"
           />
         </div>
-        <div className="py-1">
+        <div className="">
           <label>
             <span className="hidden">Confirm Password</span>
           </label>
@@ -77,7 +78,7 @@ const Signup = () => {
             onChange={(e) =>
               setInputs({ ...inputs, confirmPassword: e.target.value })
             }
-            className="rounded-md border px-10 py-2"
+            className="rounded-b-xl border px-10 py-2"
           />
         </div>
         <div className="py-7">

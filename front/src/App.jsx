@@ -1,17 +1,24 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuthContext } from "./contexts/AuthContext";
+import { useState } from "react";
+
 import Onboard from "./pages/Onboard";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import { useAuthContext } from "./contexts/AuthContext";
 import Navbar from "./components/Navbar";
+import Background from "./components/Background";
+import Toast from "./components/toast/Toast";
 
 function App() {
   const { authorizedUser } = useAuthContext();
+  const [toastError, setToastError] = useState("");
   return (
     <div className="h-screen">
+      <Toast toastError={toastError} />
+      <Background />
       <Navbar />
-      <div className="">
+      <div>
         <Routes>
           <Route
             path="/*"
