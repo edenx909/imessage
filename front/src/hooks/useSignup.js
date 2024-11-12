@@ -64,7 +64,7 @@ function handleInput({
 
   if (password.length < 6) {
     console.log("Password too short");
-    setToast("Password ");
+    setToast("Password not long enough");
     return false;
   }
 

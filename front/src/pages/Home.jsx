@@ -4,14 +4,13 @@ import LogOut from "../components/LogOut";
 
 function Home() {
   return (
-    <div className="my-10 flex h-full w-full flex-col items-center py-10 text-white">
-      <p className="py-5 text-center text-4xl text-black">Welcome</p>
-      <div className="flex h-3/5 w-2/3 items-center justify-center rounded-lg bg-[#2D292A]">
-        <div className="flex w-1/3 flex-col justify-between overflow-hidden rounded-2xl bg-[#2D292A]">
+    <div className="flex items-center justify-center bg-[#2D292A]">
+      <div className="flex h-[calc(100vh-9rem)] w-2/3 items-center justify-center rounded-lg bg-[#2D292A] text-white">
+        <div className="flex h-full flex-1 flex-col overflow-hidden rounded-2xl bg-[#2D292A] px-4">
           <UserList />
           <LogOut />
         </div>
-        <div className="w-2/3 overflow-y-auto rounded-2xl">
+        <div className="flex h-full w-2/3 flex-col overflow-y-auto rounded-xl px-4 py-6">
           <MessagesContainer />
         </div>
       </div>

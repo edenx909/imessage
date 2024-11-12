@@ -20,17 +20,18 @@ function Message({ message }) {
 
   return (
     <div className="h-full">
-      <div className="flex items-center space-y-2">
-        <img src={profile} className="h-5 w-5 rounded-full" />
+      <div
+        className={`flex flex-col space-y-2 ${fromUser ? "items-end" : "items-start"}`}
+      >
+        <img src={profile} className="h-6 w-6 rounded-full" />
         <div>
           <p className={`rounded-full px-3 py-1 ${bgColor} text-white`}>
             {message.message}
           </p>
-
-          <p className="text-xs">
-            {format(new Date(message.createdAt), "dd/MM, h:mm a")}
-          </p>
         </div>
+        <p className="text-xs">
+          {format(new Date(message.createdAt), "dd/MM, h:mm a")}
+        </p>
       </div>
     </div>
   );

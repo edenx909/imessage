@@ -1,5 +1,5 @@
-const Circles = ({ cirleDots, spread, size }) => {
-  const dots = Array.from({ length: cirleDots });
+const Circles = ({ circleDots, spread, size }) => {
+  const dots = Array.from({ length: circleDots });
 
   return (
     <>

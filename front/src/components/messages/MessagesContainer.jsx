@@ -14,7 +14,7 @@ function MessagesContainer() {
     return () => setSelectedChat(null);
   }, [setSelectedChat]);
   return (
-    <div className="flex flex-col overflow-y-auto bg-[#1F1F1F]">
+    <div className="flex flex-col overflow-y-auto rounded-xl bg-[#1F1F1F]">
       {!selectedChat ? (
         <div className="flex flex-col items-center space-y-3 rounded-md bg-[#3E3A3B] p-5">
           <img
@@ -24,17 +24,21 @@ function MessagesContainer() {
           <p>Welcome {authorizedUser.fullname}, Start a Conversation!</p>
         </div>
       ) : (
-        <div className="flex flex-col">
-          <div className="flex items-center text-center">
+        <div className="flex flex-col rounded-xl">
+          {/* user name & profile */}
+          <div className="flex w-1/2 items-center border-b-[1px] p-10 text-center">
             <img
               src={selectedChat.profile}
               className="h-10 w-10 rounded-full"
             />
             {selectedChat.username}
           </div>
-          <div className="flex flex-col">
+          {/* messages */}
+          <div className="relative flex flex-col p-6">
             <Messages />
-            <MessageInput />
+            <div className="absolute top-0">
+              <MessageInput />
+            </div>
           </div>
         </div>
       )}

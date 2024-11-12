@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./contexts/AuthContext";
-import { useState } from "react";
 
 import Onboard from "./pages/Onboard";
 import Home from "./pages/Home";
@@ -14,7 +13,7 @@ function App() {
   const { authorizedUser } = useAuthContext();
 
   return (
-    <div className="h-screen">
+    <div>
       <Toast />
       <Background />
       <Navbar />

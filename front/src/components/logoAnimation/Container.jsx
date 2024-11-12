@@ -36,7 +36,7 @@ const Container = () => {
           }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <Circles cirleDots={16} spread={"3rem"} size={"0.5rem"} />
+          <Circles circleDots={16} spread={"3rem"} size={"0.5rem"} />
         </motion.div>
       </motion.div>
       {/* CONTAINER */}
@@ -61,7 +61,7 @@ const Container = () => {
           }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <Circles cirleDots={17} spread={"4rem"} size={"0.6rem"} />
+          <Circles circleDots={17} spread={"4rem"} size={"0.6rem"} />
         </motion.div>
       </motion.div>
       {/* CONTAINER */}
@@ -86,7 +86,7 @@ const Container = () => {
           }}
           transition={{ duration: 0.9, ease: "easeOut" }}
         >
-          <Circles cirleDots={18} spread={"5rem"} size={"0.7rem"} />
+          <Circles circleDots={18} spread={"5rem"} size={"0.7rem"} />
         </motion.div>
       </motion.div>
     </div>
