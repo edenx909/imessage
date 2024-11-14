@@ -20,7 +20,7 @@ export const signup = async (req, res) => {
     const hashedPW = await bcrypt.hash(password, salt);
 
     // random unique svg art per seed
-    const profile = `https://api.dicebear.com/9.x/pixel-art/svg?seed=${username}`;
+    const profile = `https://api.dicebear.com/9.x/micah/svg?seed=${username}`;
 
     // create new if everything above valid
     const newUser = new User({

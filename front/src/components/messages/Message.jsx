@@ -1,4 +1,4 @@
-import { formatDistanceToNow, format } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -20,12 +20,13 @@ function Message({ message }) {
   const css = fromUser ? "bg-[#027BFE]" : "bg-[#FFFFFF] text-black";
 
   // is true for new messsage add animation for this
-  // const notifyClass= message.notify ? NOTIFY : ''
+  const notify = message.notify;
+  console.log(notify);
 
   return (
-    <div className="h-full pb-1">
+    <div className="h-full pb-4">
       <div
-        className={`flex flex-col ${fromUser ? "items-end" : "items-start"}`}
+        className={`flex flex-col ${fromUser ? "items-end" : "items-start"} `}
       >
         {/*  ALIGNS THE IMG LEFT/RIGHT  */}
         {fromUser ? (
@@ -35,7 +36,7 @@ function Message({ message }) {
             onMouseLeave={() => setHover(null)}
           >
             <div>
-              <p className={`rounded-full px-3 py-1 ${css} text-white`}>
+              <p className={`rounded-full px-4 py-1 ${css} text-white`}>
                 {message.message}
               </p>
             </div>
@@ -48,27 +49,45 @@ function Message({ message }) {
             onMouseLeave={() => setHover(null)}
           >
             <img src={profile} className="h-6 w-6 rounded-full" />
-            <div>
-              <p className={`rounded-full px-3 py-1 ${css} text-black`}>
+            <motion.div
+              initial={{ scale: 1 }}
+              animate={{
+                scale: notify ? [1, 1.3, 1] : 1,
+                x: notify ? [0, 10, 0] : 0,
+              }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+              }}
+              className="origin-left"
+            >
+              <p
+                className={`rounded-full px-4 py-1 ${css} pointer-events-none text-black`}
+              >
                 {message.message}
               </p>
-            </div>
+            </motion.div>
           </div>
         )}
-        <p className={`relative flex px-9 text-[0.6rem]`}>
-          <div className={`${hover ?? ""}`}>
+        <div className={`relative flex px-4 text-[0.6rem]`}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{
+              y: hover ? 0 : -10,
+              opacity: hover ? 1 : 0,
+              filter: hover ? "blur(0px)" : "blur(2px)",
+            }}
+            transition={{
+              duration: 0.3,
+              ease: "easeOut",
+            }}
+            className={`absolute text-[0.6rem] ${fromUser ? "-left-12 text-left" : "-right-12 text-right"} `}
+          >
             {formatDistanceToNow(new Date(message.createdAt), {
               addSuffix: true,
             })}
-          </div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ y: hover ? 0 : -10, opacity: hover ? 1 : 0 }}
-            className={`absolute text-[0.6rem] ${fromUser ? "-left-8" : "-right-8"} `}
-          >
-            {format(new Date(message.createdAt), "dd/MM, h:mm a")}
           </motion.div>
-        </p>
+        </div>
       </div>
     </div>
   );

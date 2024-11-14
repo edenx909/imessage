@@ -9,7 +9,7 @@ const Toast = () => {
     if (toast) {
       const timer = setTimeout(() => {
         setToast(null);
-      }, 5000);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, [toast, setToast]);
@@ -18,10 +18,10 @@ const Toast = () => {
     <AnimatePresence mode="wait">
       {toast && (
         <motion.div
-          className="fixed bottom-10 right-10 flex items-center justify-center rounded-md border px-6 py-4 text-sm"
-          initial={{ opacity: 0, x: 50, filter: "blur(5px)" }}
+          className="fixed bottom-10 left-10 flex items-center justify-center rounded-md border px-6 py-4 text-sm"
+          initial={{ opacity: 0, x: -50, filter: "blur(5px)" }}
           animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-          exit={{ opacity: 0, x: 50, filter: "blur(5px)" }}
+          exit={{ opacity: 0, x: -50, filter: "blur(5px)" }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
         >
           <p>{toast} </p>

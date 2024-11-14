@@ -3,11 +3,11 @@ import SearchInput from "../components/SearchInput";
 
 function UserList() {
   return (
-    <div className="relative flex flex-1 flex-col overflow-y-auto">
-      <div className="absolute top-0 z-50 w-full">
+    <div className="relative flex flex-1 flex-col overflow-hidden rounded-md">
+      <div className="absolute top-1 z-50 w-full">
         <SearchInput />
       </div>
-      <div className="overflow-hidden rounded-xl pt-20">
+      <div className="mt-28 overflow-auto rounded-md pb-5">
         <Chats />
       </div>
     </div>

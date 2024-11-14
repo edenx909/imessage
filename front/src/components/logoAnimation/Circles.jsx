@@ -11,7 +11,7 @@ const Circles = ({ circleDots, spread, size }) => {
             style={{
               height: size,
               width: size,
-              background: "linear-gradient(254deg, #e01fd7, #1d23b8)",
+              background: "linear-gradient(254deg, #e01fd7, #0066CC)",
               transform: `rotate(${(index / dots.length) * 360}deg) translate(${spread})`,
             }}
           />

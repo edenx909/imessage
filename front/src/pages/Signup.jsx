@@ -119,6 +119,7 @@ const Signup = () => {
               width="1.4em"
               height="1.4em"
               viewBox="0 0 24 24"
+              initial={{ rotate: "45deg" }}
               animate={{ rotate: hover ? "90deg" : "45deg" }}
               transition={{ duration: 0.1, ease: "easeIn" }}
             >

@@ -8,9 +8,6 @@ export const useToastContext = () => {
 
 export const ToastContextProvider = ({ children }) => {
   const [toast, setToast] = useState();
-  useEffect(() => {
-    console.log(toast);
-  }, [toast]);
 
   return (
     <ToastContext.Provider value={{ toast, setToast }}>

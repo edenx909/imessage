@@ -24,7 +24,6 @@ const useLogin = () => {
 
       localStorage.setItem("imsgUser", JSON.stringify(data));
       setAuthorizedUser(data);
-      console.log(data);
     } catch (error) {
       setToast(error.message);
     } finally {
