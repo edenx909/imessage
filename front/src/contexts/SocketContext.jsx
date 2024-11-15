@@ -17,7 +17,7 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (authorizedUser) {
-      const socket = io("http://localhost:8000", {
+      const socket = io("https://imessage-ctk6.onrender.com", {
         query: {
           userId: authorizedUser._id,
         },
@@ -33,7 +33,7 @@ export const SocketContextProvider = ({ children }) => {
         setSocket(null);
       }
     }
-  }, [authorizedUser]);
+  }, [authorizedUser, socket]);
 
   return (
     <SocketContext.Provider value={{ socket, onlineUsers }}>
