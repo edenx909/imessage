@@ -21,6 +21,10 @@ export const SocketContextProvider = ({ children }) => {
         query: {
           userId: authorizedUser._id,
         },
+        reconnection: true,
+        reconnectionAttempts: 10,
+        reconnectionDelay: 3000,
+        reconnectionDelayMax: 10000,
       });
       setSocket(socket);
       // used to listen to events, both on client & server side
@@ -33,7 +37,7 @@ export const SocketContextProvider = ({ children }) => {
         setSocket(null);
       }
     }
-  }, [authorizedUser, socket]);
+  }, [authorizedUser]);
 
   return (
     <SocketContext.Provider value={{ socket, onlineUsers }}>
