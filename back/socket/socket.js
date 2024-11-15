@@ -7,10 +7,10 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["*"],
+    origin: ["https://imessage-ctk6.onrender.com"],
     methods: ["GET", "POST"],
   },
-  transports: ["websocket"],
+  transports: ["websocket", "polling"],
 });
 
 export const getReceiverSocketId = (receiverId) => {
