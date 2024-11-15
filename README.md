@@ -1,7 +1,7 @@
 
 # iMessage Clone
 
-**Live Demo**: [Since this application is hosted on Render, the initial loading time may take up to a minute as the server spins up and establishes connections. ](https://imessage-ctk6.onrender.com/*)
+**Live Demo** : [The first load may take up to a minute as the app initializes on Render.](https://imessage-ctk6.onrender.com/*)
 
 
 This is a fully functional real-time messaging application inspired by iMessage. The app allows users to send and receive messages instantly, with real-time updates, online status indicators, and a seamless user interface. The project utilizes a full-stack solution to provide smooth, real-time communication between users. 
@@ -24,8 +24,6 @@ This is a fully functional real-time messaging application inspired by iMessage.
 - [UI Design](#ui-design)
 - [API Endpoints](#api-endpoints)
 - [Future Improvements](#future-improvements)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
