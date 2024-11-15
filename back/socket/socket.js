@@ -10,6 +10,7 @@ const io = new Server(server, {
     origin: ["https://imessage-ctk6.onrender.com"],
     methods: ["GET", "POST"],
   },
+  transports: ["websocket"],
 });
 
 export const getReceiverSocketId = (receiverId) => {
@@ -19,8 +20,6 @@ export const getReceiverSocketId = (receiverId) => {
 const userSocketMap = {};
 
 io.on("connection", (socket) => {
-  console.log("a user connected", socket.id);
-
   const userId = socket.handshake.query.userId;
   if (userId != "undefined") {
     userSocketMap[userId] = socket.id;
