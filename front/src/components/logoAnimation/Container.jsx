@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Circles from "./Circles";
-import Logo from "../../assets/logo";
+import Logo from "../../assets/Logo";
 
 const Container = () => {
   return (
@@ -12,7 +12,7 @@ const Container = () => {
         animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <Logo fill={"#black"} />
+        <Logo fill={"#000000"} />
       </motion.div>
       {/* CONTAINER */}
       <motion.div
