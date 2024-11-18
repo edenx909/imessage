@@ -68,6 +68,10 @@ The app is built using a combination of modern web technologies to ensure scalab
 
 ---
 
+As of now, Profile Pictures are generated randomly via DiceBearAPI. Plans are to allow users to upload profile pictures and customize their profiles.
+
+---
+
 ## How It Works
 
 ### Backend Architecture:
@@ -105,13 +109,3 @@ TailwindCSS is used for utility-first styling, which allows for rapid styling an
 ### Messaging:
 - **POST /api/messages**: Sends a message to another user or a group.
 - **GET /api/messages**: Retrieves the message history for a conversation.
-
----
-
-## Future Improvements
-
-- **Group Chat**: Enable users to create and join group chats with multiple participants.
-- **Media Sharing**: Allow users to send images, videos, or documents.
-- **User Profile Customization**: As of now, Profile Pictures are generated randomly via DiceBearAPI. Plans are to allow users to upload profile pictures and customize their profiles.
-
----
