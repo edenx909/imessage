@@ -2,33 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
-    font-family: 'SFPro';
-    src: url('/src/assets/fonts/sfpro.ttf') format('ttf');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "SFPro";
+  src: url("/src/assets/fonts/sfpro.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
 }
 
+body {
+  background-color: #2d292a;
+}
 
 /* width */
 ::-webkit-scrollbar {
-    width: 3px;
+  width: 3px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #3c3c3c;
-    border-radius: 999px;
+  background: #3c3c3c;
+  border-radius: 999px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #949494;
+  background: #949494;
 }
-

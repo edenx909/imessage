@@ -14,7 +14,7 @@ function MessagesContainer() {
     return () => setSelectedChat(null);
   }, [setSelectedChat]);
   return (
-    <div className="relative flex h-full flex-1 flex-col justify-between rounded-md bg-[#1F1F1F]">
+    <div className="relative flex flex-1 flex-col justify-between overflow-y-auto rounded-md bg-[#1F1F1F]">
       {!selectedChat ? (
         <div className="sticky top-0 flex flex-col items-center justify-center rounded-t-md bg-[#383435] p-5">
           <img

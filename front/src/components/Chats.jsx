@@ -8,7 +8,6 @@ function Chats() {
   return (
     <div className="flex flex-col items-start justify-center overflow-y-auto rounded-md">
       {loading ? <p>{Loading()}</p> : ""}
-
       {chats.map((chat) => (
         <Chat key={chat._id} chat={chat} />
       ))}

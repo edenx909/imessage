@@ -21,7 +21,6 @@ function Message({ message }) {
 
   // is true for new messsage add animation for this
   const notify = message.notify;
-  console.log(notify);
 
   return (
     <div className="h-full pb-4">

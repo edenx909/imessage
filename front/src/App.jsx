@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useAuthContext } from "./contexts/AuthContext";
 
 import Onboard from "./pages/Onboard";
@@ -11,9 +12,12 @@ import Toast from "./components/toast/Toast";
 
 function App() {
   const { authorizedUser } = useAuthContext();
+  const location = useLocation();
 
   return (
-    <div>
+    <div
+      className={`${location.pathname === "/login" || location.pathname === "/signup" ? "bg-white" : ""}`}
+    >
       <Toast />
       <Background />
       <Navbar />
