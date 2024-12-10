@@ -13,7 +13,7 @@ function LogOut() {
       ) : (
         <button
           onClick={logout}
-          className="fixed bottom-6 left-10 flex items-center text-[#0A80F7]"
+          className="fixed bottom-4 left-4 flex items-center text-[#0A80F7]"
           onMouseEnter={() => setLoadingHover(true)}
           onMouseLeave={() => setLoadingHover(false)}
         >
