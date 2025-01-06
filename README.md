@@ -1,7 +1,7 @@
 
 # iMessage Clone
 
-**Live Demo** : [The first load may take up to a minute as the app initializes on Render.](https://imessage-ctk6.onrender.com/*)
+**Live Demo** : [Hosted on Railway](https://imessage-production.up.railway.app/)
 
 
 This is a fully functional real-time messaging application inspired by iMessage. The app allows users to send and receive messages instantly, with real-time updates, online status indicators, and a seamless user interface. The project utilizes a full-stack solution to provide smooth, real-time communication between users. 
