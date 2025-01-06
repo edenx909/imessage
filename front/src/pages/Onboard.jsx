@@ -1,6 +1,6 @@
 const Onboard = ({ children }) => {
   return (
-    <div className="m-3 flex min-h-[calc(100vh-9rem)] flex-col items-center justify-center p-3">
+    <div className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center overflow-hidden p-3">
       {children}
     </div>
   );

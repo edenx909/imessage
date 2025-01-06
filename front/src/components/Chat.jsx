@@ -9,6 +9,7 @@ function Chat({ chat }) {
 
   const { onlineUsers } = useSocketContext();
   const isOnline = onlineUsers.includes(chat._id);
+
   return (
     <motion.div
       className={`flex w-full items-center border-b-[1px] border-b-[#383435] py-2 text-white`}
@@ -26,7 +27,7 @@ function Chat({ chat }) {
       <img src={chat.profile} className="mx-2 h-10 w-10 rounded-full" />
       <div>
         <motion.button className="relative flex items-center">
-          {chat.username}
+          {chat.fullName}
         </motion.button>
       </div>
       <span className="absolute right-4">

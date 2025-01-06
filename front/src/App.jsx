@@ -21,43 +21,42 @@ function App() {
       <Toast />
       <Background />
       <Navbar />
-      <div>
-        <Routes>
-          <Route
-            path="/*"
-            element={authorizedUser ? <Home /> : <Navigate to="/login" />}
-          />
 
-          <Route
-            path="/login"
-            element={
-              authorizedUser ? (
-                <Navigate to="/*" />
-              ) : (
-                <>
-                  <Onboard>
-                    <Login />
-                  </Onboard>
-                </>
-              )
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              authorizedUser ? (
-                <Navigate to="/*" />
-              ) : (
-                <>
-                  <Onboard>
-                    <Signup />
-                  </Onboard>
-                </>
-              )
-            }
-          />
-        </Routes>
-      </div>
+      <Routes>
+        <Route
+          path="/*"
+          element={authorizedUser ? <Home /> : <Navigate to="/login" />}
+        />
+
+        <Route
+          path="/login"
+          element={
+            authorizedUser ? (
+              <Navigate to="/*" />
+            ) : (
+              <>
+                <Onboard>
+                  <Login />
+                </Onboard>
+              </>
+            )
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            authorizedUser ? (
+              <Navigate to="/*" />
+            ) : (
+              <>
+                <Onboard>
+                  <Signup />
+                </Onboard>
+              </>
+            )
+          }
+        />
+      </Routes>
     </div>
   );
 }
