@@ -23,7 +23,6 @@ This is a fully functional real-time messaging application inspired by iMessage.
 - [How It Works](#how-it-works)
 - [UI Design](#ui-design)
 - [API Endpoints](#api-endpoints)
-- [Future Improvements](#future-improvements)
 
 ---
 
