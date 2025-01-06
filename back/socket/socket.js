@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["https://imessage-production.up.railway.app/"],
+    origin: ["https://imessage-production.up.railway.app"],
     methods: ["GET", "POST"],
   },
   transports: ["websocket", "polling"],
