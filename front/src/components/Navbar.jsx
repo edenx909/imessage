@@ -82,9 +82,9 @@ const Navbar = () => {
         </button>
       </div>
       {open && (
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait ">
           <motion.div
-            className="fixed mx-3 flex flex-col space-y-3 px-8 pb-8 text-sm"
+            className="fixed z-50 flex flex-col space-y-3 rounded-xl bg-white px-8 py-8 text-sm md:rounded-none md:bg-transparent"
             initial={{ y: -40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -40, opacity: 0 }}
@@ -106,7 +106,7 @@ const Navbar = () => {
               transition={{ duration: 0.8 }}
             >
               <Link to="/signup" onClick={() => setOpen(false)}>
-                Create Your Apple Account
+                Create Your Account
               </Link>
             </motion.div>
             <motion.div className="h-1 w-full border-b" />
