@@ -20,13 +20,25 @@ function Login() {
     await login(username, password);
   };
 
+  // handle guest logins
+
+  const [guestLogin, setGuestLogin] = useState(false);
+  const handleGuest1Login = async (e) => {
+    e.preventDefault();
+    await login("guest1", "123456789");
+  };
+
+  const handleGuest2Login = async (e) => {
+    e.preventDefault();
+    await login("guest2", "987654321");
+  };
+
   return (
     <div className="flex flex-col items-center justify-center">
       {/* Logo Container */}
       <Container />
       <p className="py-4 text-lg">One account for everything Apple</p>
       {loading && <div className="fixed top-0">{Loading()}</div>}
-
       <form onSubmit={handleSubmit}>
         <div className="">
           <label>
@@ -100,6 +112,55 @@ function Login() {
           </Link>
         </div>
       </form>
+      <div className="relative">
+        <div
+          className="flex cursor-pointer items-start space-x-2 rounded-xl border bg-transparent px-10 py-2"
+          onClick={() => setGuestLogin(!guestLogin)}
+        >
+          <p>Login as Guest</p>
+          <div className="rotate-90">
+            <motion.svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1.3em"
+              height="1.3em"
+              viewBox="0 0 24 24"
+              initial={{ rotateY: "180deg", filter: "blur(0px)" }}
+              animate={{
+                rotateY: guestLogin ? "45deg" : "180deg",
+                scaleY: guestLogin ? [1, 1.3, 1] : 1,
+                filter: guestLogin
+                  ? ["blur(0px)", "blur(3px)", "blur(0px)"]
+                  : "blur(0px)",
+              }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+            >
+              <path
+                fill="currentColor"
+                d="m4.296 12l8.492-8.727a.75.75 0 1 0-1.075-1.046l-9 9.25a.75.75 0 0 0 0 1.046l9 9.25a.75.75 0 1 0 1.075-1.046z"
+              ></path>
+            </motion.svg>
+          </div>
+        </div>
+        {guestLogin && (
+          <motion.div
+            className="absolute inset-0 top-24 flex flex-col items-center justify-center"
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -20, opacity: 0 }}
+            transition={{ duration: 1.2, staggerChildren: 0.9 }}
+          >
+            <motion.button
+              onClick={handleGuest1Login}
+              className="border-b-2 px-10 py-2"
+            >
+              Guest 1
+            </motion.button>
+            <button onClick={handleGuest2Login} className="px-10 py-2">
+              Guest 2
+            </button>
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 }
